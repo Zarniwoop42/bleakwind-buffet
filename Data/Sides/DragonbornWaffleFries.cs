@@ -7,38 +7,52 @@ namespace Data.Sides
 {
     class DragonbornWaffleFries
     {
+        private Size size = Size.Small;
+
         /// <summary>
         /// Gets drink size
         /// </summary>
-        public Size Size => Size.Small;
+        public Size Size { get => size; set => size = value; }
 
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price { get; set; } = 0.42;
+        public double Price
+        {
+            get
+            {
+                switch (size)
+                {
+                    case Size.Small:
+                        return 0.42;
+                    case Size.Medium:
+                        return 0.76;
+                    case Size.Large:
+                        return 0.96;
+                    default:
+                        return -0.0; //Size price not specified
+                }
+            }
+        }
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories { get; set; } = 77;
-
-        /// <summary>
-        /// Sets prices and calories based on size enum
-        /// </summary>
-        /// <param name="Size"></param>
-        public DragonbornWaffleFries(Size Size)
+        public uint Calories
         {
-            switch (Size)
+            get
             {
-                case Size.Small:
-                    Price = 0.42; Calories = 77;
-                    break;
-                case Size.Medium:
-                    Price = 0.76; Calories = 89;
-                    break;
-                case Size.Large:
-                    Price = 0.96; Calories = 100;
-                    break;
+                switch (size)
+                {
+                    case Size.Small:
+                        return 77;
+                    case Size.Medium:
+                        return 89;
+                    case Size.Large:
+                        return 100;
+                    default:
+                        return -0; //Size calories not specified
+                }
             }
         }
 

@@ -7,38 +7,53 @@ namespace Data.Drinks
 {
     class CandlehearthCoffee
     {
+
+        private Size size = Size.Small;
+
         /// <summary>
         /// Gets drink size
         /// </summary>
-        public Size Size => Size.Small;
+        public Size Size { get => size; set => size = value; }
 
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price { get; set; } = 0.75;
+        public double Price
+        {
+            get
+            {
+                switch (size)
+                {
+                    case Size.Small:
+                        return 0.75;
+                    case Size.Medium:
+                        return 1.25;
+                    case Size.Large:
+                        return 1.75;
+                    default:
+                        return -0.0; //Size price not specified
+                }
+            }
+        }
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories { get; set; } = 7;
-
-        /// <summary>
-        /// Sets prices and calories based on size enum
-        /// </summary>
-        /// <param name="Size"></param>
-        public CandlehearthCoffee(Size Size)
+        public uint Calories
         {
-            switch (Size)
+            get
             {
-                case Size.Small:
-                    Price = 0.75; Calories = 7;
-                    break;
-                case Size.Medium:
-                    Price = 1.25; Calories = 10;
-                    break;
-                case Size.Large:
-                    Price = 1.75; Calories = 20;
-                    break;
+                switch (size)
+                {
+                    case Size.Small:
+                        return 7;
+                    case Size.Medium:
+                        return 10;
+                    case Size.Large:
+                        return 20;
+                    default:
+                        return -0; //Size calories not specified
+                }
             }
         }
 

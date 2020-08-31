@@ -7,38 +7,52 @@ namespace Data.Sides
 {
     class MadOtarGrits
     {
+        private Size size = Size.Small;
+
         /// <summary>
         /// Gets drink size
         /// </summary>
-        public Size Size => Size.Small;
+        public Size Size { get => size; set => size = value; }
 
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price { get; set; } = 1.22;
+        public double Price
+        {
+            get
+            {
+                switch (size)
+                {
+                    case Size.Small:
+                        return 1.22;
+                    case Size.Medium:
+                        return 1.58;
+                    case Size.Large:
+                        return 1.93;
+                    default:
+                        return -0.0; //Size price not specified
+                }
+            }
+        }
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories { get; set; } = 105;
-
-        /// <summary>
-        /// Sets prices and calories based on size enum
-        /// </summary>
-        /// <param name="Size"></param>
-        public MadOtarGrits(Size Size)
+        public uint Calories
         {
-            switch (Size)
+            get
             {
-                case Size.Small:
-                    Price = 1.22; Calories = 105;
-                    break;
-                case Size.Medium:
-                    Price = 1.58; Calories = 142;
-                    break;
-                case Size.Large:
-                    Price = 1.93; Calories = 179;
-                    break;
+                switch (size)
+                {
+                    case Size.Small:
+                        return 105;
+                    case Size.Medium:
+                        return 142;
+                    case Size.Large:
+                        return 179;
+                    default:
+                        return -0; //Size calories not specified
+                }
             }
         }
 

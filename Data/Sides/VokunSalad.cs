@@ -7,38 +7,52 @@ namespace Data.Sides
 {
     class VokunSalad
     {
+        private Size size = Size.Small;
+
         /// <summary>
         /// Gets drink size
         /// </summary>
-        public Size Size => Size.Small;
+        public Size Size { get => size; set => size = value; }
 
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price { get; set; } = 0.93;
+        public double Price
+        {
+            get
+            {
+                switch (size)
+                {
+                    case Size.Small:
+                        return 0.93;
+                    case Size.Medium:
+                        return 1.28;
+                    case Size.Large:
+                        return 1.82;
+                    default:
+                        return -0.0; //Size price not specified
+                }
+            }
+        }
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories { get; set; } = 41;
-
-        /// <summary>
-        /// Sets prices and calories based on size enum
-        /// </summary>
-        /// <param name="Size"></param>
-        public VokunSalad(Size Size)
+        public uint Calories
         {
-            switch (Size)
+            get
             {
-                case Size.Small:
-                    Price = 0.93; Calories = 41;
-                    break;
-                case Size.Medium:
-                    Price = 1.28; Calories = 52;
-                    break;
-                case Size.Large:
-                    Price = 1.82; Calories = 73;
-                    break;
+                switch (size)
+                {
+                    case Size.Small:
+                        return 41;
+                    case Size.Medium:
+                        return 52;
+                    case Size.Large:
+                        return 73;
+                    default:
+                        return -0; //Size calories not specified
+                }
             }
         }
 

@@ -7,38 +7,52 @@ namespace Data.Sides
 {
     class FriedMiraak
     {
+        private Size size = Size.Small;
+
         /// <summary>
         /// Gets drink size
         /// </summary>
-        public Size Size => Size.Small;
+        public Size Size { get => size; set => size = value; }
 
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price { get; set; } = 1.78;
+        public double Price
+        {
+            get
+            {
+                switch (size)
+                {
+                    case Size.Small:
+                        return 1.78;
+                    case Size.Medium:
+                        return 2.01;
+                    case Size.Large:
+                        return 2.88;
+                    default:
+                        return -0.0; //Size price not specified
+                }
+            }
+        }
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories { get; set; } = 151;
-
-        /// <summary>
-        /// Sets prices and calories based on size enum
-        /// </summary>
-        /// <param name="Size"></param>
-        public FriedMiraak(Size Size)
+        public uint Calories
         {
-            switch (Size)
+            get
             {
-                case Size.Small:
-                    Price = 1.78; Calories = 151;
-                    break;
-                case Size.Medium:
-                    Price = 2.01; Calories = 236;
-                    break;
-                case Size.Large:
-                    Price = 2.88; Calories = 306;
-                    break;
+                switch (size)
+                {
+                    case Size.Small:
+                        return 151;
+                    case Size.Medium:
+                        return 236;
+                    case Size.Large:
+                        return 306;
+                    default:
+                        return -0; //Size calories not specified
+                }
             }
         }
 

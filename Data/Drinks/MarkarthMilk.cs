@@ -7,38 +7,52 @@ namespace Data.Drinks
 {
     class MarkarthMilk
     {
+        private Size size = Size.Small;
+
         /// <summary>
         /// Gets drink size
         /// </summary>
-        public Size Size => Size.Small;
+        public Size Size { get => size; set => size = value; }
 
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price { get; set; } = 1.05;
+        public double Price
+        {
+            get
+            {
+                switch (size)
+                {
+                    case Size.Small:
+                        return 1.05;
+                    case Size.Medium:
+                        return 1.11;
+                    case Size.Large:
+                        return 1.22;
+                    default:
+                        return -0.0; //Size price not specified
+                }
+            }
+        }
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories { get; set; } = 56;
-
-        /// <summary>
-        /// Sets prices and calories based on size enum
-        /// </summary>
-        /// <param name="Size"></param>
-        public MarkarthMilk(Size Size)
+        public uint Calories
         {
-            switch (Size)
+            get
             {
-                case Size.Small:
-                    Price = 1.05; Calories = 56;
-                    break;
-                case Size.Medium:
-                    Price = 1.11; Calories = 72;
-                    break;
-                case Size.Large:
-                    Price = 1.22; Calories = 93;
-                    break;
+                switch (size)
+                {
+                    case Size.Small:
+                        return 56;
+                    case Size.Medium:
+                        return 72;
+                    case Size.Large:
+                        return 93;
+                    default:
+                        return -0; //Size calories not specified
+                }
             }
         }
 
