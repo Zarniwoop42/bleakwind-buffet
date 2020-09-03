@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
-    class SailorSoda
+    public class SailorSoda
     {
-        private Size size = Size.Small;
+        public Size size = Size.Small;
 
         /// <summary>
         /// Gets drink size
@@ -54,7 +54,7 @@ namespace Data.Drinks
             }
         }
 
-        private SodaFlavor flavor = SodaFlavor.Cherry;
+        public SodaFlavor flavor = SodaFlavor.Cherry;
 
         /// <summary>
         /// Gets drink flavor
@@ -64,7 +64,7 @@ namespace Data.Drinks
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        private bool Ice { get; set; } = true;
+        public bool Ice { get; set; } = true;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

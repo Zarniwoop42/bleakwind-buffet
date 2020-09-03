@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class SmokehouseSkeleton
+    public class SmokehouseSkeleton
     {
         /// <summary>
         /// Gets price of menu item
@@ -19,22 +19,22 @@ namespace Data.Entrees
         /// <summary>
         /// Gets/sets SausageLink preference of menu item
         /// </summary>
-        private bool SausageLink { get; set; } = true;
+        public bool SausageLink { get; set; } = true;
 
         /// <summary>
         /// Gets/sets Egg preference of menu item
         /// </summary>
-        private bool Egg { get; set; } = true;
+        public bool Egg { get; set; } = true;
 
         /// <summary>
         /// Gets/sets HashBrowns preference of menu item
         /// </summary>
-        private bool HashBrowns { get; set; } = true;
+        public bool HashBrowns { get; set; } = true;
 
         /// <summary>
         /// Gets/sets Pancake preference of menu item
         /// </summary>
-        private bool Pancake { get; set; } = true;
+        public bool Pancake { get; set; } = true;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

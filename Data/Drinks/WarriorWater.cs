@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
-    class WarriorWater
+    public class WarriorWater
     {
         /// <summary>
         /// Gets drink size
@@ -25,12 +25,12 @@ namespace Data.Drinks
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        private bool Ice { get; set; } = true;
-        
+        public bool Ice { get; set; } = true;
+
         /// <summary>
         /// Gets/sets lemon preference of menu item
         /// </summary>
-        private bool Lemon { get; set; } = false;
+        public bool Lemon { get; set; } = false;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

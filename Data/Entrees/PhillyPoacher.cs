@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class PhillyPoacher
+    public class PhillyPoacher
     {
         /// <summary>
         /// Gets price of menu item
@@ -19,17 +19,17 @@ namespace Data.Entrees
         /// <summary>
         /// Gets/sets Sirloin preference of menu item
         /// </summary>
-        private bool Sirloin { get; set; } = true;
+        public bool Sirloin { get; set; } = true;
 
         /// <summary>
         /// Gets/sets Onion preference of menu item
         /// </summary>
-        private bool Onion { get; set; } = true;
+        public bool Onion { get; set; } = true;
 
         /// <summary>
         /// Gets/sets Roll preference of menu item
         /// </summary>
-        private bool Roll { get; set; } = true;
+        public bool Roll { get; set; } = true;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

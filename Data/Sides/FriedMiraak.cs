@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
 
-namespace Data.Sides
+namespace BleakwindBuffet.Data.Sides
 {
-    class FriedMiraak
+    public class FriedMiraak
     {
-        private Size size = Size.Small;
+        public Size size = Size.Small;
 
         /// <summary>
         /// Gets drink size

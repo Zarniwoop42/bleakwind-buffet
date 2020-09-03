@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
-    class AretinoAppleJuice
+    public class AretinoAppleJuice
     {
-        private Size size = Size.Small;
+        public Size size = Size.Small;
 
         /// <summary>
         /// Gets drink size
@@ -59,7 +59,7 @@ namespace Data.Drinks
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        private bool Ice { get; set; } = false;
+        public bool Ice { get; set; } = false;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

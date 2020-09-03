@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class GardenOrcOmlette
+    public class GardenOrcOmlette
     {
         /// <summary>
         /// Gets price of menu item
@@ -19,22 +19,22 @@ namespace Data.Entrees
         /// <summary>
         /// Gets/sets Broccoli preference of menu item
         /// </summary>
-        private bool Broccoli { get; set; } = true;
+        public bool Broccoli { get; set; } = true;
 
         /// <summary>
         /// Gets/sets Mushrooms preference of menu item
         /// </summary>
-        private bool Mushrooms { get; set; } = true;
+        public bool Mushrooms { get; set; } = true;
 
         /// <summary>
         /// Gets/sets Tomato preference of menu item
         /// </summary>
-        private bool Tomato { get; set; } = true;
+        public bool Tomato { get; set; } = true;
 
         /// <summary>
         /// Gets/sets Cheddar preference of menu item
         /// </summary>
-        private bool Cheddar { get; set; } = true;
+        public bool Cheddar { get; set; } = true;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

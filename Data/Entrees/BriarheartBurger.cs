@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class BriarheartBurger
+    public class BriarheartBurger
     {
         /// <summary>
         /// Gets price of menu item
@@ -19,27 +19,27 @@ namespace Data.Entrees
         /// <summary>
         /// Gets/sets bun preference of menu item
         /// </summary>
-        private bool Bun { get; set; } = true;
+        public bool Bun { get; set; } = true;
 
         /// <summary>
         /// Gets/sets ketchup preference of menu item
         /// </summary>
-        private bool Ketchup { get; set; }  = true;
+        public bool Ketchup { get; set; }  = true;
 
         /// <summary>
         /// Gets/sets mustard preference of menu item
         /// </summary>
-        private bool Mustard { get; set; } = true;
-      
+        public bool Mustard { get; set; } = true;
+
         /// <summary>
         /// Gets/sets pickle preference of menu item
         /// </summary>
-        private bool Pickle { get; set; } = true;
-     
+        public bool Pickle { get; set; } = true;
+
         /// <summary>
         /// Gets/sets cheese preference of menu item
         /// </summary>
-        private bool Cheese { get; set; } = true;
+        public bool Cheese { get; set; } = true;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.
