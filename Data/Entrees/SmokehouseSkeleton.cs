@@ -55,7 +55,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// returns name of menu menu item.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string naming the menu item</returns>
         public override string ToString()
         {
             return "Smokehouse Skeleton";

@@ -7,20 +7,40 @@ namespace BleakwindBuffet.Data.Drinks
 {
     public class WarriorWater
     {
+        public Size size = Size.Small;
+
         /// <summary>
         /// Gets drink size
         /// </summary>
-        public Size Size => Size.Small;
+        public Size Size { get => size; set => size = value; }
 
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price { get; set; } = 0.00;
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the price for the size of menu item is not known 
+        /// </exception>
+        public double Price
+        {
+            get
+            {
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories { get; set; } = 0;
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the calories for the size of menu item is not known 
+        /// </exception>
+        public uint Calories
+        {
+            get
+            {
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Gets/sets Ice preference of menu item
@@ -49,10 +69,10 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// returns name of menu menu item.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string naming the menu item</returns>
         public override string ToString()
         {
-            return $"{Size} WarriorWater";
+            return $"{Size} Warrior Water";
         }
     }
 }

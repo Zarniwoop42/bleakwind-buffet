@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class GardenOrcOmlette
+    public class GardenOrcOmelette
     {
         /// <summary>
         /// Gets price of menu item
@@ -55,7 +55,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// returns name of menu menu item.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string naming the menu item</returns>
         public override string ToString()
         {
             return "Garden Orc Omlette";

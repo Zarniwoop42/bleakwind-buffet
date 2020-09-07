@@ -18,6 +18,9 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets price of menu item
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the price or calories for the size of menu item is not known 
+        /// </exception>
         public double Price
         {
             get
@@ -31,7 +34,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Large:
                         return 1.75;
                     default:
-                        return -0.0; //Size price not specified
+                        throw new NotImplementedException($"Unknown size {Size}"); //Size price not specified
                 }
             }
         }
@@ -39,6 +42,9 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the price or calories for the size of menu item is not known 
+        /// </exception>
         public uint Calories
         {
             get
@@ -52,7 +58,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Large:
                         return 20;
                     default:
-                        return -0; //Size calories not specified
+                        throw new NotImplementedException($"Unknown size {Size}"); //Size calories not specified
                 }
             }
         }
@@ -89,7 +95,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// returns name of menu menu item.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string naming the menu item</returns>
         public override string ToString()
         {
             if(Decaf)
