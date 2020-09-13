@@ -4,17 +4,17 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class GardenOrcOmelette
+    public class GardenOrcOmelette : Entree, IOrderItem
     {
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price => 4.57;
+        public override double Price => 4.57;
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories => 404;
+        public override uint Calories => 404;
 
         /// <summary>
         /// Gets/sets Broccoli preference of menu item
@@ -39,7 +39,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets list of special instructions for the menu item.
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
@@ -58,7 +58,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <returns>A string naming the menu item</returns>
         public override string ToString()
         {
-            return "Garden Orc Omlette";
+            return "Garden Orc Omelette";
         }
     }
 }

@@ -14,6 +14,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
     public class DragonbornWaffleFriesTests
     {
         [Fact]
+        public void ShouldBeAnIOrderItem()
+        {
+            DragonbornWaffleFries dbwf = new DragonbornWaffleFries();
+            Assert.IsAssignableFrom<IOrderItem>(dbwf);
+        }
+        [Fact]
+        public void ShouldBeASide()
+        {
+            DragonbornWaffleFries dbwf = new DragonbornWaffleFries();
+            Assert.IsAssignableFrom<Side>(dbwf);
+        }
+
+        [Fact]
         public void ShouldBeSmallByDefault()
         {
             DragonbornWaffleFries dbwf = new DragonbornWaffleFries();

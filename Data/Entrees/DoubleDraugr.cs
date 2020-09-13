@@ -4,17 +4,17 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class DoubleDraugr
+    public class DoubleDraugr : Entree, IOrderItem
     {
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price => 7.32;
+        public override double Price => 7.32;
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories => 843;
+        public override uint Calories => 843;
 
         /// <summary>
         /// Gets/sets bun preference of menu item
@@ -59,7 +59,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets list of special instructions for the menu item.
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

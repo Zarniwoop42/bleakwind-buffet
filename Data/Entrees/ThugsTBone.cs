@@ -4,22 +4,22 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class ThugsTBone
+    public class ThugsTBone : Entree, IOrderItem
     {
         /// <summary>
         /// Gets price of menu item
         /// </summary>
-        public double Price => 6.44;
+        public override double Price => 6.44;
 
         /// <summary>
         /// Gets calories of menu item
         /// </summary>
-        public uint Calories => 982;
+        public override uint Calories => 982;
 
         /// <summary>
         /// Gets list of special instructions for the menu item.
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

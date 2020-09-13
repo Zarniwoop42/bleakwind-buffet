@@ -5,26 +5,19 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class VokunSalad
+    public class VokunSalad : Side, IOrderItem
     {
-        public Size size = Size.Small;
-
-        /// <summary>
-        /// Gets drink size
-        /// </summary>
-        public Size Size { get => size; set => size = value; }
-
         /// <summary>
         /// Gets price of menu item
         /// </summary>
         /// <exception cref="System.NotImplementedException">
         /// Thrown if the price or calories for the size of menu item is not known 
         /// </exception>
-        public double Price
+        public override double Price
         {
             get
             {
-                switch (size)
+                switch (Size)
                 {
                     case Size.Small:
                         return 0.93;
@@ -44,11 +37,11 @@ namespace BleakwindBuffet.Data.Sides
         /// <exception cref="System.NotImplementedException">
         /// Thrown if the price or calories for the size of menu item is not known 
         /// </exception>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
-                switch (size)
+                switch (Size)
                 {
                     case Size.Small:
                         return 41;
@@ -65,7 +58,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// Gets list of special instructions for the menu item.
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
