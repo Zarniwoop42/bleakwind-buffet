@@ -7,12 +7,15 @@
 namespace BleakwindBuffet.Data.Enums
 {
     /// <summary>
-    /// Provides available sizes
+    /// Provides available soda flavors
     /// </summary>
-    public enum Size
+    public enum SodaFlavor
     {
-        Small,
-        Medium,
-        Large
-    } 
+        Blackberry,
+        Cherry,
+        Grapefruit,
+        Lemon,
+        Peach,
+        Watermelon
+    }
 }
