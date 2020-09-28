@@ -23,13 +23,16 @@ namespace PointOfSale
     /// </summary>
     public partial class MenuScreen : UserControl
     {
-        Menu menu = new Menu();
-        IEnumerable<IOrderItem> entrees = Menu.Entrees();
-        IEnumerable<IOrderItem> sides = Menu.Sides();
-        IEnumerable<IOrderItem> drinks = Menu.Drinks();
+        /// <summary>
+        /// private variables
+        /// </summary>
+        private Menu menu = new Menu();
+        private IEnumerable<IOrderItem> entrees = Menu.Entrees();
+        private IEnumerable<IOrderItem> sides = Menu.Sides();
+        private IEnumerable<IOrderItem> drinks = Menu.Drinks();
 
-        string size = "Small";
-        string flavor = "Blackberry";
+        private string size = "Small";
+        private string flavor = "Blackberry";
 
         public MenuScreen()
         {
@@ -37,7 +40,10 @@ namespace PointOfSale
             AddMenuItemToColumn();
         }
 
-        void AddMenuItemToColumn()
+        /// <summary>
+        /// Creates item selection menus for each Menu.cs method
+        /// </summary>
+        private void AddMenuItemToColumn()
         {
             foreach(IOrderItem entree in entrees)
             {
@@ -75,7 +81,12 @@ namespace PointOfSale
             }
         }
 
-        void CreateButton(string name, string column)
+        /// <summary>
+        /// Creates a button with provided name for provided column
+        /// </summary>
+        /// <param name="name">Menu item name for button</param>
+        /// <param name="column">Entree, Side, or Drink</param>
+        private void CreateButton(string name, string column)
         {
             Button item = new Button();
             item.Content = name; item.Click += Selection;
@@ -96,7 +107,12 @@ namespace PointOfSale
             }
         }
 
-        void Selection(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Button click event for any menu item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Selection(object sender, RoutedEventArgs e)
         {
             string name = (sender as Button).Name;
             string text = (sender as Button).Content.ToString().Trim();
@@ -245,14 +261,24 @@ namespace PointOfSale
             Selected.Children.Add(item);
         }
 
-        void RadioChecked(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Click event for Size/Flavor radiobuttons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RadioChecked(object sender, RoutedEventArgs e)
         {
             string group = (sender as RadioButton).GroupName.ToString();
             if (group == "SIZE") size = (sender as RadioButton).Content.ToString();
             if (group == "FLAVOR") flavor = (sender as RadioButton).Content.ToString();
         }
 
-        void OKSelection(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Click event for confirming customization button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OKSelection(object sender, RoutedEventArgs e)
         {
             var txt = (TextBlock)Selected.Children[Selected.Children.Count - 1];
 
@@ -264,7 +290,13 @@ namespace PointOfSale
             ToggleGrid.Children.Remove(this.ToggleGrid.Children[1]);
             ToggleGrid.Children[0].Visibility = Visibility.Visible;
         }
-        void CancelOrder(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Click event for cancel order button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CancelOrder(object sender, RoutedEventArgs e)
         {
             Selected.Children.Clear();
         }
