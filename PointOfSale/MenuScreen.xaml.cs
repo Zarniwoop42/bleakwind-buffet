@@ -1,4 +1,7 @@
-﻿using BleakwindBuffet.Data;
+﻿///Author: Graham Mathews
+///MenuScreen.xaml.cs
+///Defines a menu screen where items are displayed to be selected and customized
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data.Enums;
 using System;
@@ -90,7 +93,8 @@ namespace PointOfSale
         {
             Button item = new Button();
             item.Content = name; item.Click += Selection;
-            
+
+
             if (column == "entree") {
                 item.Name = "ENTREE_" + name.Replace(" ", "").Replace("-", "");
                 EntreesColumn.Children.Add(item); 
@@ -119,7 +123,7 @@ namespace PointOfSale
 
 
             StackPanel selectOption = new StackPanel();
-            TextBlock n = new TextBlock(); n.Text = text; n.FontSize = 20; selectOption.Children.Add(n);
+            TextBlock n = new TextBlock(); n.Text = text; n.FontSize = 40; n.FontWeight = FontWeights.Bold; selectOption.Children.Add(n); 
 
             MenuGrid.Visibility = Visibility.Collapsed;
 
@@ -127,7 +131,7 @@ namespace PointOfSale
             {
                 text = "SELECTING SIZE --" + text;
 
-                TextBlock sizeBox = new TextBlock(); sizeBox.Text = "Select Size"; sizeBox.FontSize = 20;
+                TextBlock sizeBox = new TextBlock(); sizeBox.Text = "Select Size"; sizeBox.FontSize = 30; sizeBox.FontWeight = FontWeights.Bold;
                 selectOption.Children.Add(sizeBox);
                 RadioButton small = new RadioButton(); small.Content = "Small"; small.GroupName = "SIZE"; small.IsChecked = true; small.Click += RadioChecked;
                 RadioButton med = new RadioButton(); med.Content = "Medium"; med.GroupName = "SIZE"; med.Click += RadioChecked;
@@ -140,7 +144,7 @@ namespace PointOfSale
                 {
                     text = text.Replace("SELECTING SIZE --", "SELECTING SIZE -- SELECTING FLAVOR --");
 
-                    TextBlock flavBox = new TextBlock(); flavBox.Text = "Select Flavor"; flavBox.FontSize = 20;
+                    TextBlock flavBox = new TextBlock(); flavBox.Text = "Select Flavor"; flavBox.FontSize = 30; flavBox.FontWeight = FontWeights.Bold;
                     selectOption.Children.Add(flavBox);
 
                     foreach (SodaFlavor flavor in Enum.GetValues(typeof(SodaFlavor)))
@@ -155,7 +159,7 @@ namespace PointOfSale
 
             if (!name.Contains("SIDE") && !text.Contains("Thugs"))
             {
-                TextBlock otherBox = new TextBlock(); otherBox.Text = "Other Customization"; otherBox.FontSize = 20;
+                TextBlock otherBox = new TextBlock(); otherBox.Text = "Other Customization"; otherBox.FontSize = 30; otherBox.FontWeight = FontWeights.Bold;
                 selectOption.Children.Add(otherBox);
             }
 
@@ -257,7 +261,7 @@ namespace PointOfSale
             selectGrid.Children.Add(OK);
 
             TextBlock item = new TextBlock();
-            item.Text = text;
+            item.Text = text; item.FontWeight = FontWeights.Bold; item.FontSize = 20;
             Selected.Children.Add(item);
         }
 

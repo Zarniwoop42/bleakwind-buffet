@@ -1,11 +1,16 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///SailorSoda.cs
+///Define SS
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
+
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class SailorSoda : Drink, IOrderItem
+    public class SailorSoda : Drink, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Private variables
@@ -13,6 +18,11 @@ namespace BleakwindBuffet.Data.Drinks
         private bool ice = true;
         private Size size = Size.Small;
         private SodaFlavor flavor = SodaFlavor.Cherry;
+
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
 
 
         /// <summary>
@@ -62,15 +72,30 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Gets drink flavor
+        /// Gets/sets flavor preference of menu item
         /// </summary>
-        public SodaFlavor Flavor { get => flavor; set => flavor = value; }
+        public SodaFlavor Flavor
+        {
+            get => flavor;
+            set
+            {
+                flavor = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Flavor"));
+            }
+        }
 
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        public bool Ice { get; set; } = true;
-
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
         /// <summary>
         /// Gets list of special instructions for the menu item.
         /// </summary>

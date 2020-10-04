@@ -1,11 +1,21 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///ThugsTBone.cs
+///Define Tbone
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class ThugsTBone : Entree, IOrderItem
+    public class ThugsTBone : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets price of menu item
         /// </summary>

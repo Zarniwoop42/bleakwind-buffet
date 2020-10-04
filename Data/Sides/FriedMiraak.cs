@@ -1,12 +1,22 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///FriedMiraak.cs
+///Define friedmiraaks
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
+
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class FriedMiraak : Side, IOrderItem
-    { 
+    public class FriedMiraak : Side, IOrderItem, INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets price of menu item
         /// </summary>

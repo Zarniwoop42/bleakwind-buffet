@@ -13,6 +13,67 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
     public class SmokehouseSkeletonTests
     {
         [Fact]
+        public void ChangingSausageLinkNotifiesSausageLinkProperty()
+        {
+            var shs = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(shs, "SausageLink", () =>
+            {
+                shs.SausageLink = true;
+            });
+
+            Assert.PropertyChanged(shs, "SausageLink", () =>
+            {
+                shs.SausageLink = false;
+            });
+        }
+        [Fact]
+        public void ChangingEggNotifiesEggProperty()
+        {
+            var shs = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(shs, "Egg", () =>
+            {
+                shs.Egg = true;
+            });
+
+            Assert.PropertyChanged(shs, "Egg", () =>
+            {
+                shs.Egg = false;
+            });
+        }
+        [Fact]
+        public void ChangingHashBrownsNotifiesHashBrownsProperty()
+        {
+            var shs = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(shs, "HashBrowns", () =>
+            {
+                shs.HashBrowns = true;
+            });
+
+            Assert.PropertyChanged(shs, "HashBrowns", () =>
+            {
+                shs.HashBrowns = false;
+            });
+        }
+        [Fact]
+        public void ChangingPancakeNotifiesPancakeProperty()
+        {
+            var shs = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(shs, "Pancake", () =>
+            {
+                shs.Pancake = true;
+            });
+
+            Assert.PropertyChanged(shs, "Pancake", () =>
+            {
+                shs.Pancake = false;
+            });
+        }
+
+        [Fact]
         public void ShouldBeAnIOrderItem()
         {
             SmokehouseSkeleton shs = new SmokehouseSkeleton();

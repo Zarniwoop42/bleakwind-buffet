@@ -1,12 +1,22 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///MadOtarGrits.cs
+///Define MOG
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
+
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class MadOtarGrits : Side, IOrderItem
+    public class MadOtarGrits : Side, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets price of menu item
         /// </summary>

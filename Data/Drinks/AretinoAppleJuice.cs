@@ -1,17 +1,27 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///AretinoAppleJuice.cs
+///Define AAJ
+
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class AretinoAppleJuice : Drink, IOrderItem
+    public class AretinoAppleJuice : Drink, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Private variables
         /// </summary>
         private bool ice = false;
         private Size size = Size.Small;
+
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Gets price of menu item
@@ -64,7 +74,15 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        public bool Ice { get; set; } = false;
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

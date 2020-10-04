@@ -1,11 +1,28 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///PhillyPoacher.cs
+///Define PP
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
+
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class PhillyPoacher : Entree, IOrderItem
+    public class PhillyPoacher : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// private backing variables
+        /// </summary>
+        private bool sirloin = true;
+        private bool onion = true;
+        private bool roll = true;
+
         /// <summary>
         /// Gets price of menu item
         /// </summary>
@@ -19,17 +36,42 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets/sets Sirloin preference of menu item
         /// </summary>
-        public bool Sirloin { get; set; } = true;
+        public bool Sirloin
+        {
+            get => sirloin;
+            set
+            {
+                sirloin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sirloin"));
+            }
+        }
+
 
         /// <summary>
-        /// Gets/sets Onion preference of menu item
+        /// Gets/sets onion preference of menu item
         /// </summary>
-        public bool Onion { get; set; } = true;
+        public bool Onion
+        {
+            get => onion;
+            set
+            {
+                onion = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Onion"));
+            }
+        }
 
         /// <summary>
-        /// Gets/sets Roll preference of menu item
+        /// Gets/sets roll preference of menu item
         /// </summary>
-        public bool Roll { get; set; } = true;
+        public bool Roll
+        {
+            get => roll;
+            set
+            {
+                roll = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Roll"));
+            }
+        }
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

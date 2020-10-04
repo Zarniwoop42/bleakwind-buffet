@@ -1,11 +1,16 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///CandlehearthCoffee.cs
+///Define CHH
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
+
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class CandlehearthCoffee : Drink, IOrderItem
+    public class CandlehearthCoffee : Drink, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Private variables
@@ -14,6 +19,12 @@ namespace BleakwindBuffet.Data.Drinks
         private Size size = Size.Small;
         private bool roomForCream = false;
         private bool decaf = false;
+
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
 
         /// <summary>
         /// Gets price of menu item
@@ -66,17 +77,42 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        public bool Ice { get; set; } = false;
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
 
         /// <summary>
-        /// Gets/sets cream  preference of menu item
+        /// Gets/sets cream preference of menu item
         /// </summary>
-        public bool RoomForCream { get; set; } = false;
+        public bool RoomForCream
+        {
+            get => roomForCream;
+            set
+            {
+                roomForCream = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RoomForCream"));
+            }
+        }
+
 
         /// <summary>
-        /// Gets/sets decaf  preference of menu item
+        /// Gets/sets Decaf preference of menu item
         /// </summary>
-        public bool Decaf { get; set; } = false;
+        public bool Decaf
+        {
+            get => decaf;
+            set
+            {
+                decaf = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Decaf"));
+            }
+        }
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

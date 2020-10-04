@@ -1,11 +1,28 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///GardenOrcOmelette.cs
+///Define GOO
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class GardenOrcOmelette : Entree, IOrderItem
+    public class GardenOrcOmelette : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// private backing variables
+        /// </summary>
+        private bool broccoli = true;
+        private bool mushrooms = true;
+        private bool tomato = true;
+        private bool cheddar = true;
+
         /// <summary>
         /// Gets price of menu item
         /// </summary>
@@ -17,24 +34,57 @@ namespace BleakwindBuffet.Data.Entrees
         public override uint Calories => 404;
 
         /// <summary>
-        /// Gets/sets Broccoli preference of menu item
+        /// Gets/sets broccoli preference of menu item
         /// </summary>
-        public bool Broccoli { get; set; } = true;
+        public bool Broccoli
+        {
+            get => broccoli;
+            set
+            {
+                broccoli = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
+            }
+        }
+
 
         /// <summary>
-        /// Gets/sets Mushrooms preference of menu item
+        /// Gets/sets mushrooms preference of menu item
         /// </summary>
-        public bool Mushrooms { get; set; } = true;
+        public bool Mushrooms
+        {
+            get => mushrooms;
+            set
+            {
+                mushrooms = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
+            }
+        }
 
         /// <summary>
-        /// Gets/sets Tomato preference of menu item
+        /// Gets/sets tomato preference of menu item
         /// </summary>
-        public bool Tomato { get; set; } = true;
+        public bool Tomato
+        {
+            get => tomato;
+            set
+            {
+                tomato = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+            }
+        }
 
         /// <summary>
-        /// Gets/sets Cheddar preference of menu item
+        /// Gets/sets cheddar preference of menu item
         /// </summary>
-        public bool Cheddar { get; set; } = true;
+        public bool Cheddar
+        {
+            get => cheddar;
+            set
+            {
+                cheddar = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
+            }
+        }
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

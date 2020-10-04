@@ -1,11 +1,28 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///SmokehouseSkeleton.cs
+///Define SHS
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class SmokehouseSkeleton : Entree, IOrderItem
+    public class SmokehouseSkeleton : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// private backing variables
+        /// </summary>
+        private bool sausageLink = true;
+        private bool egg = true;
+        private bool hashBrowns = true;
+        private bool pancake = true;
+
         /// <summary>
         /// Gets price of menu item
         /// </summary>
@@ -16,25 +33,60 @@ namespace BleakwindBuffet.Data.Entrees
         /// </summary>
         public override uint Calories => 602;
 
-        /// <summary>
-        /// Gets/sets SausageLink preference of menu item
-        /// </summary>
-        public bool SausageLink { get; set; } = true;
 
         /// <summary>
-        /// Gets/sets Egg preference of menu item
+        /// Gets/sets sausageLink preference of menu item
         /// </summary>
-        public bool Egg { get; set; } = true;
+        public bool SausageLink
+        {
+            get => sausageLink;
+            set
+            {
+                sausageLink = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SausageLink"));
+            }
+        }
+
 
         /// <summary>
-        /// Gets/sets HashBrowns preference of menu item
+        /// Gets/sets egg preference of menu item
         /// </summary>
-        public bool HashBrowns { get; set; } = true;
+        public bool Egg
+        {
+            get => egg;
+            set
+            {
+                egg = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
+            }
+        }
 
         /// <summary>
-        /// Gets/sets Pancake preference of menu item
+        /// Gets/sets hashBrowns preference of menu item
         /// </summary>
-        public bool Pancake { get; set; } = true;
+        public bool HashBrowns
+        {
+            get => hashBrowns;
+            set
+            {
+                hashBrowns = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HashBrowns"));
+            }
+        }
+
+        /// <summary>
+        /// Gets/sets pancake preference of menu item
+        /// </summary>
+        public bool Pancake
+        {
+            get => pancake;
+            set
+            {
+                pancake = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pancake"));
+            }
+        }
+
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

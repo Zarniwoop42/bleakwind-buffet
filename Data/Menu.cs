@@ -1,4 +1,7 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///Menu.cs
+///Offers functions for creating various menus
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Entrees;
@@ -137,7 +140,7 @@ namespace BleakwindBuffet.Data
                 ss = new SailorSoda(); e = (Drink)ss; e.Size = size;
                 foreach (SodaFlavor flavor in Enum.GetValues(typeof(SodaFlavor)))
                 {
-                    ss = new SailorSoda(); e = (Drink)ss; e.Size = size; ss.Flavor = flavor;
+                    ss = new SailorSoda(); ss.Flavor = flavor;  e = (Drink)ss; e.Size = size;
                     drinks.Add((IOrderItem)e);
                 }
             }

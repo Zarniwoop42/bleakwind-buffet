@@ -1,4 +1,7 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///IOrderItem.cs
+///Define Properties for all items to inherit
+using System;
 using System.Collections.Generic;
 using System.Text;
 

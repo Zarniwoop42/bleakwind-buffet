@@ -1,4 +1,7 @@
-﻿using BleakwindBuffet.Data.Enums;
+﻿///Author: Graham Mathews
+///Side.cs
+///Define properties for sides to inherit
+using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;

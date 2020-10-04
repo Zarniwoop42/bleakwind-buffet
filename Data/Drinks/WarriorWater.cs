@@ -1,11 +1,16 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///WarriorWater.cs
+///Define WW
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
+
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class WarriorWater : Drink, IOrderItem
+    public class WarriorWater : Drink, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Private variables
@@ -13,6 +18,12 @@ namespace BleakwindBuffet.Data.Drinks
         private bool ice = true;
         private Size size = Size.Small;
         private bool lemon = false;
+
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
 
         /// <summary>
         /// Gets price of menu item
@@ -39,12 +50,28 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        public bool Ice { get; set; } = true;
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
 
         /// <summary>
         /// Gets/sets lemon preference of menu item
         /// </summary>
-        public bool Lemon { get; set; } = false;
+        public bool Lemon
+        {
+            get => lemon;
+            set
+            {
+                lemon = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lemon"));
+            }
+        }
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

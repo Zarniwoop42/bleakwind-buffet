@@ -1,17 +1,28 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///MarkarthMilk.cs
+///Define Milk
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
+
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class MarkarthMilk : Drink, IOrderItem
+    public class MarkarthMilk : Drink, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Private variables
         /// </summary>
         private bool ice = false;
         private Size size = Size.Small;
+
+        /// <summary>
+        /// Event for tracking when property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
 
         /// <summary>
         /// Gets price of menu item
@@ -64,7 +75,15 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets/sets Ice preference of menu item
         /// </summary>
-        public bool Ice { get; set; } = false;
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
 
         /// <summary>
         /// Gets list of special instructions for the menu item.

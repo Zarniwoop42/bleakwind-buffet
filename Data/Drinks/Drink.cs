@@ -1,4 +1,7 @@
-﻿using BleakwindBuffet.Data.Enums;
+﻿///Author: Graham Mathews
+///Drink.cs
+///Define Drink Interface
+using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;

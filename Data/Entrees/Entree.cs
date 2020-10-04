@@ -1,4 +1,7 @@
-﻿using BleakwindBuffet.Data.Enums;
+﻿///Author: Graham Mathews
+///Entree.cs
+///Define properties entrees should inherit
+using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
