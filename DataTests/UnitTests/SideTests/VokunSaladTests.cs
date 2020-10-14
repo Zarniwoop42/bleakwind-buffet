@@ -4,6 +4,7 @@
  * Purpose: Test the VokunSalad.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Sides;
@@ -18,6 +19,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             VokunSalad vs = new VokunSalad();
             Assert.IsAssignableFrom<IOrderItem>(vs);
+        } 
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            VokunSalad vs = new VokunSalad();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(vs);
         }
         [Fact]
         public void ShouldBeASide()

@@ -4,6 +4,7 @@
  * Purpose: Test the DoubleDraugr.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
@@ -139,6 +140,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             DoubleDraugr dd = new DoubleDraugr();
             Assert.IsAssignableFrom<IOrderItem>(dd);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            DoubleDraugr dd = new DoubleDraugr();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(dd);
         }
         [Fact]
         public void ShouldBeAnEntree()

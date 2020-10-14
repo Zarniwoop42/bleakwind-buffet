@@ -4,6 +4,7 @@
  * Purpose: Test the SmokehouseSkeleton.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
@@ -78,6 +79,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             SmokehouseSkeleton shs = new SmokehouseSkeleton();
             Assert.IsAssignableFrom<IOrderItem>(shs);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            SmokehouseSkeleton shs = new SmokehouseSkeleton();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(shs);
         }
         [Fact]
         public void ShouldBeAnEntree()

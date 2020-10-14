@@ -7,6 +7,7 @@ using System;
 
 using Xunit;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
@@ -52,6 +53,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             SailorSoda ss = new SailorSoda();
             Assert.IsAssignableFrom<IOrderItem>(ss);
+        }
+
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            SailorSoda ss = new SailorSoda();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(ss);
         }
         
         [Fact]

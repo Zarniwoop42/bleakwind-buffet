@@ -4,6 +4,7 @@
  * Purpose: Test the GardenOrcOmelette.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
@@ -82,6 +83,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             GardenOrcOmelette goo = new GardenOrcOmelette();
             Assert.IsAssignableFrom<IOrderItem>(goo);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            GardenOrcOmelette goo = new GardenOrcOmelette();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(goo);
         }
         [Fact]
         public void ShouldBeAnEntree()

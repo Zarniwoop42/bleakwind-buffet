@@ -4,6 +4,7 @@
  * Purpose: Test the MadOtarGrits.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Sides;
@@ -18,6 +19,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             MadOtarGrits mog = new MadOtarGrits();
             Assert.IsAssignableFrom<IOrderItem>(mog);
+        }  
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            MadOtarGrits mog = new MadOtarGrits();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(mog);
         }
         [Fact]
         public void ShouldBeASide()

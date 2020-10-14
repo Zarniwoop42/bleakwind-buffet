@@ -5,6 +5,7 @@
  */
 using Xunit;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
@@ -35,6 +36,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             MarkarthMilk mm = new MarkarthMilk();
             Assert.IsAssignableFrom<IOrderItem>(mm);
+        }
+        
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            MarkarthMilk mm = new MarkarthMilk();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(mm);
         }
 
         [Fact]

@@ -21,7 +21,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Event for tracking when property changes
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public override event PropertyChangedEventHandler PropertyChanged;
 
 
         /// <summary>
@@ -93,7 +93,11 @@ namespace BleakwindBuffet.Data.Drinks
             get
             {
                 List<string> instructions = new List<string>();
-                if (Ice) instructions.Add("Add ice");
+                if (Ice)
+                {
+                    instructions.Add("Add ice");
+        
+                }
                 return instructions;
             }
         }

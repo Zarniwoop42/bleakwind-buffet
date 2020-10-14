@@ -4,6 +4,7 @@
  * Purpose: Test the FriedMiraak.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Sides;
@@ -18,6 +19,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             FriedMiraak fm = new FriedMiraak();
             Assert.IsAssignableFrom<IOrderItem>(fm);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            FriedMiraak fm = new FriedMiraak();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(fm);
         }
         [Fact]
         public void ShouldBeASide()

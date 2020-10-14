@@ -4,6 +4,7 @@
  * Purpose: Test the ThalmorTriple.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
@@ -170,6 +171,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             ThalmorTriple tt = new ThalmorTriple();
             Assert.IsAssignableFrom<IOrderItem>(tt);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            ThalmorTriple tt = new ThalmorTriple();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(tt);
         }
         [Fact]
         public void ShouldBeAnEntree()

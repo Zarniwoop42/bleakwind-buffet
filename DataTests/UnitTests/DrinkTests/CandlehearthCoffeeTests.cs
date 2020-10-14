@@ -5,6 +5,7 @@
  */
 using Xunit;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
@@ -65,6 +66,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             CandlehearthCoffee chc = new CandlehearthCoffee();
             Assert.IsAssignableFrom<IOrderItem>(chc);
+        }
+        
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            CandlehearthCoffee chc = new CandlehearthCoffee();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(chc);
         }
 
 

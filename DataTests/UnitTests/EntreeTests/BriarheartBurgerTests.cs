@@ -4,6 +4,7 @@
  * Purpose: Test the BriarheartBurger.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
@@ -93,6 +94,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             BriarheartBurger bb = new BriarheartBurger();
             Assert.IsAssignableFrom<IOrderItem>(bb);
+        }
+        
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            BriarheartBurger bb = new BriarheartBurger();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(bb);
         }
 
         [Fact]

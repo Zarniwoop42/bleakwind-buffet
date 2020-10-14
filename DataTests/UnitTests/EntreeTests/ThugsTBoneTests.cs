@@ -4,6 +4,7 @@
  * Purpose: Test the ThugsTBone.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
@@ -17,6 +18,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             ThugsTBone ttb = new ThugsTBone();
             Assert.IsAssignableFrom<IOrderItem>(ttb);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            ThugsTBone ttb = new ThugsTBone();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(ttb);
         }
         [Fact]
         public void ShouldBeAnEntree()

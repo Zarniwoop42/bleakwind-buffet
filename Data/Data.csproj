@@ -5,4 +5,8 @@
     <RootNamespace>BleakwindBuffet.Data</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Enums\Items.cs" />
+  </ItemGroup>
+
 </Project>

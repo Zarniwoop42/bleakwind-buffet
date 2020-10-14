@@ -4,6 +4,7 @@
  * Purpose: Test the PhillyPoacher.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
@@ -64,6 +65,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             PhillyPoacher pp = new PhillyPoacher();
             Assert.IsAssignableFrom<IOrderItem>(pp);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            PhillyPoacher pp = new PhillyPoacher();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(pp);
         }
         [Fact]
         public void ShouldBeAnEntree()

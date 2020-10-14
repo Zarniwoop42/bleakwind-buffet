@@ -4,6 +4,7 @@
  * Purpose: Test the DragonbornWaffleFries.cs class in the Data library
  */
 using Xunit;
+using System.ComponentModel;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Sides;
@@ -18,6 +19,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             DragonbornWaffleFries dbwf = new DragonbornWaffleFries();
             Assert.IsAssignableFrom<IOrderItem>(dbwf);
+        }
+        [Fact]
+        public void ShouldBePropertyChanged()
+        {
+            DragonbornWaffleFries dbwf = new DragonbornWaffleFries();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(dbwf);
         }
         [Fact]
         public void ShouldBeASide()
