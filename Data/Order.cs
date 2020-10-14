@@ -13,7 +13,7 @@ namespace BleakwindBuffet.Data
 {
     public class Order : IOrderItem, INotifyPropertyChanged, ICollection<IOrderItem>, INotifyCollectionChanged
     {
-        private List<IOrderItem> orderList = new List<IOrderItem>();
+        public List<IOrderItem> orderList = new List<IOrderItem>();
 
         /// <summary>
         /// Events for tracking when property or collection changes
@@ -43,7 +43,7 @@ namespace BleakwindBuffet.Data
         public void Add(IOrderItem item)
         {
             orderList.Add(item);
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
@@ -56,7 +56,6 @@ namespace BleakwindBuffet.Data
         /// <param name="item">item to remove from order</param>
         bool ICollection<IOrderItem>.Remove(IOrderItem item)
         {
-            orderList.Remove(item);
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
@@ -65,6 +64,19 @@ namespace BleakwindBuffet.Data
             return ((ICollection<IOrderItem>)orderList).Remove(item);
         }
 
+        /// <summary>
+        /// removes item from order list
+        /// </summary>
+        /// <param name="item">item to remove from order</param>
+        public void Remove(IOrderItem item)
+        {
+            orderList.Remove(item);
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+        }
 
         public void Clear()
         {
@@ -128,11 +140,13 @@ namespace BleakwindBuffet.Data
         {
             get
             {
+                if (orderList == null) return 0;
+                subtotal = 0;
                 foreach (IOrderItem i in orderList)
                 {
                     subtotal += i.Price;
                 }
-                return subtotal;
+                return Math.Round(subtotal, 2);
             }
         }
         
@@ -147,7 +161,12 @@ namespace BleakwindBuffet.Data
         /// <value>In US dollars</value>
         public double Tax
         {
-            get => tax;
+            get
+            {
+                if (orderList == null) return 0;
+                tax = 0;
+                return Math.Round(Subtotal * SalesTaxRate, 2);
+            }
         }
         
         /// <summary>
@@ -161,7 +180,12 @@ namespace BleakwindBuffet.Data
         /// <value>In US dollars</value>
         public double Total
         {
-            get => total;
+            get
+            {
+                total = 0;
+               
+                return Math.Round(Subtotal + Tax, 2);
+            }
         }
 
         public double Price { get; set; }

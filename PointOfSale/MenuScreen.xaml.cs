@@ -9,6 +9,7 @@ using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -41,6 +42,8 @@ namespace PointOfSale
         private List<IOrderItem> ordered = new List<IOrderItem>();
         private int menuNum = 1;
         private IOrderItem menuitem;
+        private int itemNum = 1;
+        private Order CurrentOrder;
 
         /// <summary>
         /// Event for tracking when property changes
@@ -55,6 +58,7 @@ namespace PointOfSale
             InitializeComponent();
             AddMenuItemToColumn();
             DataContext = new Order();
+            CurrentOrder = (Order)DataContext;
         }
 
         /// <summary>
@@ -134,7 +138,7 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Selection(object sender, RoutedEventArgs e)
+       private void Selection(object sender, RoutedEventArgs e)
         {
             string name = (sender as Button).Name; string numText = (sender as Button).Content.ToString();
             string text = numText.Replace("1", "").Replace("2", "").Replace("3", "").Replace("4", "").Replace("5", "").Replace("6", "").Replace("7", "").Replace("8", "").Replace("9", "").Replace("0", "").Replace(")", "").Trim();
@@ -333,7 +337,7 @@ namespace PointOfSale
                     case "Watermelon": f = 5; break;
                 }
 
-                ((SailorSoda)menuitem).Flavor = (BleakwindBuffet.Data.Enums.SodaFlavor)f;
+                ((SailorSoda)menuitem).Flavor = (SodaFlavor)f;
             }
         }
 
@@ -345,9 +349,61 @@ namespace PointOfSale
         private void OKSelection(object sender, RoutedEventArgs e)
         {
             ordered.Add(menuitem);
+            CurrentOrder.Add(menuitem);
+
+            ListView orderI = new ListView();
+            
             TextBlock item = new TextBlock();
             item.Text = menuitem.ToString(); item.FontWeight = FontWeights.Bold; item.FontSize = 20;
-            Selected.Children.Add(item);
+            orderI.Items.Add(item);
+
+            item = new TextBlock();
+            item.Text = "$"+menuitem.Price.ToString(); item.FontSize = 14;
+            orderI.Items.Add(item);
+
+            ListView orderISI = new ListView();
+
+            if (menuitem.SpecialInstructions.Count > 0)
+            {
+                foreach (string si in menuitem.SpecialInstructions)
+                {
+                    if(si.Length > 0)
+                    {
+                        item = new TextBlock();
+                        item.Text = si; item.FontWeight = FontWeights.Thin; item.FontSize = 12;
+                        orderISI.Items.Add(item);
+                    }
+                }
+            }
+
+            orderI.Items.Add(orderISI);
+
+            Button removeItem = new Button(); removeItem.Content = "Remove Item " + itemNum; removeItem.Click += removeClick;
+
+
+            orderI.Items.Add(removeItem);
+
+            /*
+            Button reselection = new Button(); reselection.Content = "Customize " + itemNum; reselection.Click += (sender, args) =>
+            {
+                
+                ().removeClick();
+
+            };
+            orderI.Items.Add(reselection);
+            */
+            
+
+
+            Pricing.Children.Clear();
+            TextBlock sub = new TextBlock(); sub.Text = "$" + CurrentOrder.Subtotal.ToString(); sub.FontWeight = FontWeights.Bold;
+            Pricing.Children.Add(sub);
+            sub = new TextBlock(); sub.Text = "$" + CurrentOrder.Tax.ToString(); sub.FontWeight = FontWeights.Bold;
+            Pricing.Children.Add(sub);
+            sub = new TextBlock(); sub.Text = "$" + CurrentOrder.Total.ToString(); sub.FontWeight = FontWeights.Bold;
+            Pricing.Children.Add(sub);
+
+            Selected.Children.Add(orderI);
 
             size = "Blackberry";
             flavor = "Small";
@@ -356,6 +412,7 @@ namespace PointOfSale
 
             ToggleGrid.Children.Remove(this.ToggleGrid.Children[1]);
             ToggleGrid.Children[0].Visibility = Visibility.Visible;
+            itemNum++;
         }
 
         /// <summary>
@@ -367,10 +424,11 @@ namespace PointOfSale
         {
             ordered = new List<IOrderItem>();
             Selected.Children.Clear();
+            Pricing.Children.Clear();
             DataContext = new Order();
-            orderNumber.Text = "Order #" + ((Order)DataContext).Number;
-
-
+            CurrentOrder = (Order)DataContext;
+            orderNumber.Text = "Order #" + CurrentOrder.Number;
+            itemNum = 1;
         }
 
         /// <summary>
@@ -382,9 +440,55 @@ namespace PointOfSale
         {
             ordered = new List<IOrderItem>();
             Selected.Children.Clear();
+            Pricing.Children.Clear();
             DataContext = new Order();
-            orderNumber.Text = "Order #" + ((Order)DataContext).Number;
+            CurrentOrder = (Order)DataContext;
+            orderNumber.Text = "Order #" + CurrentOrder.Number;
+            itemNum = 1;
+        }
 
+        /// <summary>
+        /// Click event for remove item button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void removeClick(object sender, RoutedEventArgs e)
+        {
+            string name = ((Button)sender).Content.ToString();
+
+            int itemToRemove = Convert.ToInt32(Regex.Match(name, @"\d+$").Value);
+
+            int indexToRemove = 0;
+
+            for (int LV = 0; LV < Selected.Children.Count; LV++) //Find order item that must be removed based on number in button name. Yeah I overcomplicated this.
+            {
+                if (Selected.Children[LV] is ListView)
+                {
+                    for (int element = 0; element < ((ListView)Selected.Children[LV]).Items.Count; element++)
+                    {
+                        if (((ListView)Selected.Children[LV]).Items[element] is Button)
+                        {
+                            string b = ((Button)((ListView)Selected.Children[LV]).Items[element]).Content.ToString();
+                            if (itemToRemove == Convert.ToInt32(Regex.Match(b, @"\d+$").Value))
+                            {
+                                Selected.Children.Remove(Selected.Children[indexToRemove]);
+                                break;
+                            }
+                        }
+                    }
+                    indexToRemove++;
+                }
+            }
+            itemNum--; menuitem = CurrentOrder.orderList[indexToRemove - 1];
+
+            CurrentOrder.Remove(CurrentOrder.orderList[indexToRemove - 1]);
+            Pricing.Children.Clear();
+            TextBlock sub = new TextBlock(); sub.Text = "$" + CurrentOrder.Subtotal.ToString(); sub.FontWeight = FontWeights.Bold;
+            Pricing.Children.Add(sub);
+            sub = new TextBlock(); sub.Text = "$" + CurrentOrder.Tax.ToString(); sub.FontWeight = FontWeights.Bold;
+            Pricing.Children.Add(sub);
+            sub = new TextBlock(); sub.Text = "$" + CurrentOrder.Total.ToString(); sub.FontWeight = FontWeights.Bold;
+            Pricing.Children.Add(sub);
         }
 
         /// <summary>
@@ -396,8 +500,11 @@ namespace PointOfSale
         {
             ordered = new List<IOrderItem>();
             Selected.Children.Clear();
+            Pricing.Children.Clear();
             DataContext = new Order();
-            orderNumber.Text = "Order #" + ((Order)DataContext).Number;
+            CurrentOrder = (Order)DataContext;
+            orderNumber.Text = "Order #" + CurrentOrder.Number;
+            itemNum = 1;
         }
     }
 }
