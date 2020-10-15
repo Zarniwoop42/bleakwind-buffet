@@ -383,17 +383,6 @@ namespace PointOfSale
 
             orderI.Items.Add(removeItem);
 
-            /*
-            Button reselection = new Button(); reselection.Content = "Customize " + itemNum; reselection.Click += (sender, args) =>
-            {
-                
-                ().removeClick();
-
-            };
-            orderI.Items.Add(reselection);
-            */
-            
-
 
             Pricing.Children.Clear();
             TextBlock sub = new TextBlock(); sub.Text = "$" + CurrentOrder.Subtotal.ToString(); sub.FontWeight = FontWeights.Bold;

@@ -45,12 +45,13 @@ namespace BleakwindBuffet.Data
         public double Price
         {
             get {
+                price = 0;
                 foreach (IOrderItem i in comboItems)
                 {
                     price += i.Price;
                 }
                 price -= 1;
-                return price;
+                return Math.Round(price, 2);
             }        
         }
 
@@ -65,6 +66,7 @@ namespace BleakwindBuffet.Data
         public uint Calories {
             get
             {
+                calories = 0;
                 foreach (IOrderItem i in comboItems)
                 {
                     calories += i.Calories;
@@ -76,7 +78,7 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// private backing special instructions value
         /// </summary>
-        private List<string> specialInstructions;
+        private List<string> specialInstructions = new List<string>();
 
         /// <summary>
         /// The special instructions to prepare the drink
@@ -88,7 +90,8 @@ namespace BleakwindBuffet.Data
                 {
                     foreach (string s in i.SpecialInstructions)
                     {
-                        specialInstructions.Add(s);
+                        if(s != null)
+                            specialInstructions.Add(s);
                     }
                 }
                 return specialInstructions;

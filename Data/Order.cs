@@ -48,6 +48,7 @@ namespace BleakwindBuffet.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace BleakwindBuffet.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
             return ((ICollection<IOrderItem>)orderList).Remove(item);
         }
 
@@ -76,6 +78,7 @@ namespace BleakwindBuffet.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
         }
 
         public void Clear()
@@ -86,6 +89,7 @@ namespace BleakwindBuffet.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
         }
 
         public bool Contains(IOrderItem item)
@@ -187,7 +191,10 @@ namespace BleakwindBuffet.Data
                 return Math.Round(Subtotal + Tax, 2);
             }
         }
-
+        /// <summary>
+        /// private backing total price value. Inherited but not used.
+        /// </summary>
+        private double price = 0;
         public double Price { get; set; }
 
 
@@ -203,6 +210,7 @@ namespace BleakwindBuffet.Data
         {
             get
             {
+                calories = 0;
                 foreach (IOrderItem i in orderList)
                 {
                     calories += i.Calories;
@@ -214,7 +222,7 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// private backing special instructions value
         /// </summary>
-        private List<string> specialInstructions;
+        private List<string> specialInstructions = new List<string>();
 
         /// <summary>
         /// The special instructions to prepare the drink
@@ -227,7 +235,8 @@ namespace BleakwindBuffet.Data
                 {
                     foreach (string s in i.SpecialInstructions)
                     {
-                        specialInstructions.Add(s);
+                        if(s != null)
+                            specialInstructions.Add(s);
                     }
                 }
                 return specialInstructions;
