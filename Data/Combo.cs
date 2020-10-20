@@ -15,16 +15,29 @@ namespace BleakwindBuffet.Data
 
         public Combo(IOrderItem d, IOrderItem e, IOrderItem s)
         {
-            drink = (Drink)d; entree = (Entree)e; side = (Side)s;
-
             comboItems.Add(d); comboItems.Add(e); comboItems.Add(s);
+
+            for (int i = 0; i < comboItems.Count; i++)
+            {
+                if(comboItems[i].GetType().ToString() == "Drink")
+                {
+                    drink = (Drink)comboItems[i];
+                }
+                if(comboItems[i].GetType().ToString() == "Side")
+                {
+                    side = (Side)comboItems[i];
+                }
+                if(comboItems[i].GetType().ToString() == "Entree")
+                {
+                    entree = (Entree)comboItems[i];
+                }
+            }
         }
 
         /// <summary>
         /// Event for tracking when property changes
         /// </summary>
         public virtual event PropertyChangedEventHandler PropertyChanged;
-
 
         /// <summary>
         /// private backing variables

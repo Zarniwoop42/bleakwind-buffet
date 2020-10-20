@@ -23,6 +23,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height=".1*"/>
                         <RowDefinition/>
+                        <RowDefinition Height=".1*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">Entrees</TextBlock>
                     <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">Sides</TextBlock>
@@ -30,6 +31,7 @@
                     <StackPanel Name="EntreesColumn" Grid.Column="0" Grid.Row="1"></StackPanel>
                     <StackPanel Name="SidesColumn" Grid.Column="1" Grid.Row="1"></StackPanel>
                     <StackPanel Name="DrinksColumn" Grid.Column="2" Grid.Row="1"></StackPanel>
+                    <Button x:Name="ComboButton" Content="Create Combo" Grid.Row="2" Grid.ColumnSpan="3" Click="CreateCombo"/>
                 </Grid>
             </Grid>
         </Border>

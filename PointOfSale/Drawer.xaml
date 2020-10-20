@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="PointOfSale.Drawer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8"/>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <local:CashDrawerUpdate/>
+    </UserControl.DataContext>
+    <Grid x:Name="Primary">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="BILLS      $" TextWrapping="Wrap" FontSize="17" Padding="3"/>
+        <TextBlock Text="From Customer" TextWrapping="Wrap" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <TextBlock Text="Give As Change" FontSize="13" TextWrapping="Wrap" Grid.Column="4"/>
+        <TextBlock Text="COINS      ¢" Grid.Column="5" TextWrapping="Wrap" FontSize="17" Padding="3"/>
+        <TextBlock Text="From Customer" TextWrapping="Wrap" Grid.Column="6" Grid.ColumnSpan="3"/>
+        <TextBlock Text="Give As Change" FontSize="13" TextWrapping="Wrap" Grid.Column="9"/>
+        
+        <TextBlock Text="$100" Grid.Row="1" Background="LimeGreen"/>
+        <TextBlock Text="$50" Grid.Row="2" Background="LimeGreen"/>
+        <TextBlock Text="$20" Grid.Row="3" Background="LimeGreen"/>
+        <TextBlock Text="$10" Grid.Row="4" Background="LimeGreen"/>
+        <TextBlock Text="$5" Grid.Row="5" Background="LimeGreen"/>
+        <TextBlock Text="$2" Grid.Row="6" Background="LimeGreen"/>
+        <TextBlock Text="$1" Grid.Row="7" Background="LimeGreen"/>
+
+        <TextBlock Text="$1" Grid.Row="1" Grid.Column="5" Background="SandyBrown"/>
+        <TextBlock Text="50¢" Grid.Row="2" Grid.Column="5" Background="SandyBrown"/>
+        <TextBlock Text="25¢" Grid.Row="3" Grid.Column="5" Background="SandyBrown"/>
+        <TextBlock Text="10¢" Grid.Row="4" Grid.Column="5" Background="SandyBrown"/>
+        <TextBlock Text="5¢" Grid.Row="5" Grid.Column="5" Background="SandyBrown"/>
+        <TextBlock Text="1¢" Grid.Row="6" Grid.Column="5" Background="SandyBrown"/>
+
+        <Button Name="One_Plus" Content="+" Grid.Row="1" Grid.Column="1" Click="AddBill"/>
+        <Button Name="Two_Plus" Content="+" Grid.Row="2" Grid.Column="1" Click="AddBill"/>
+        <Button Name="Three_Plus" Content="+" Grid.Row="3" Grid.Column="1" Click="AddBill"/>
+        <Button Name="Four_Plus" Content="+" Grid.Row="4" Grid.Column="1" Click="AddBill"/>
+        <Button Name="Five_Plus" Content="+" Grid.Row="5" Grid.Column="1" Click="AddBill"/>
+        <Button Name="Six_Plus" Content="+" Grid.Row="6" Grid.Column="1" Click="AddBill"/>
+        <Button Name="Seven_Plus" Content="+" Grid.Row="7" Grid.Column="1" Click="AddBill"/>
+
+        <Button Name="Eight_Plus" Content="+" Grid.Row="1" Grid.Column="6" Click="AddBill"/>
+        <Button Name="Nine_Plus" Content="+" Grid.Row="2" Grid.Column="6" Click="AddBill"/>
+        <Button Name="Ten_Plus" Content="+" Grid.Row="3" Grid.Column="6" Click="AddBill"/>
+        <Button Name="Eleven_Plus" Content="+" Grid.Row="4" Grid.Column="6" Click="AddBill"/>
+        <Button Name="Twelve_Plus" Content="+" Grid.Row="5" Grid.Column="6" Click="AddBill"/>
+        <Button Name="Thirteen_Plus" Content="+" Grid.Row="6" Grid.Column="6" Click="AddBill"/>
+        
+        <Button Name="One_Minus" Content="-" Grid.Row="1" Grid.Column="3" Click="RemoveBill"/>
+        <Button Name="Two_Minus" Content="-" Grid.Row="2" Grid.Column="3" Click="RemoveBill"/>
+        <Button Name="Three_Minus" Content="-" Grid.Row="3" Grid.Column="3" Click="RemoveBill"/>
+        <Button Name="Four_Minus" Content="-" Grid.Row="4" Grid.Column="3" Click="RemoveBill"/>
+        <Button Name="Five_Minus" Content="-" Grid.Row="5" Grid.Column="3" Click="RemoveBill"/>
+        <Button Name="Six_Minus" Content="-" Grid.Row="6" Grid.Column="3" Click="RemoveBill"/>
+        <Button Name="Seven_Minus" Content="-" Grid.Row="7" Grid.Column="3" Click="RemoveBill"/>
+
+        <Button Name="Eight_Minus" Content="-" Grid.Row="1" Grid.Column="8" Click="RemoveBill"/>
+        <Button Name="Nine_Minus" Content="-" Grid.Row="2" Grid.Column="8" Click="RemoveBill"/>
+        <Button Name="Ten_Minus" Content="-" Grid.Row="3" Grid.Column="8" Click="RemoveBill"/>
+        <Button Name="Eleven_Minus" Content="-" Grid.Row="4" Grid.Column="8" Click="RemoveBill"/>
+        <Button Name="Twelve_Minus" Content="-" Grid.Row="5" Grid.Column="8" Click="RemoveBill"/>
+        <Button Name="Thirteen_Minus" Content="-" Grid.Row="6" Grid.Column="8" Click="RemoveBill"/>
+
+        <TextBlock Name="One_From" Text="{Binding Path=CHundreds}" Grid.Column="2" Grid.Row="1"/>
+        <TextBlock Name="Two_From" Text="{Binding Path=CFifties}" Grid.Column="2" Grid.Row="2"/>
+        <TextBlock Name="Three_From" Text="{Binding Path=CTwenties}" Grid.Column="2" Grid.Row="3"/>
+        <TextBlock Name="Four_From" Text="{Binding Path=CTens}" Grid.Column="2" Grid.Row="4"/>
+        <TextBlock Name="Five_From" Text="{Binding Path=CFives}" Grid.Column="2" Grid.Row="5"/>
+        <TextBlock Name="Six_From" Text="{Binding Path=CTwos}" Grid.Column="2" Grid.Row="6"/>
+        <TextBlock Name="Seven_From" Text="{Binding Path=COnes}" Grid.Column="2" Grid.Row="7"/>
+        
+        <TextBlock Name="Eight_From" Text="{Binding Path=CDollars}" Grid.Column="7" Grid.Row="1"/>
+        <TextBlock Name="Nine_From" Text="{Binding Path=CHalfDollars}" Grid.Column="7" Grid.Row="2"/>
+        <TextBlock Name="Ten_From" Text="{Binding Path=CQuarters}" Grid.Column="7" Grid.Row="3"/>
+        <TextBlock Name="Eleven_From" Text="{Binding Path=CDimes}" Grid.Column="7" Grid.Row="4"/>
+        <TextBlock Name="Twelve_From" Text="{Binding Path=CNickels}" Grid.Column="7" Grid.Row="5"/>
+        <TextBlock Name="Thirteen_From" Text="{Binding Path=CPennies}" Grid.Column="7" Grid.Row="6"/>
+        
+        <TextBlock Name="One_Give" Text="{Binding Path=GHundreds}" Grid.Column="4" Grid.Row="1"/>
+        <TextBlock Name="Two_Give" Text="{Binding Path=GFifties}" Grid.Column="4" Grid.Row="2"/>
+        <TextBlock Name="Three_Give" Text="{Binding Path=GTwenties}" Grid.Column="4" Grid.Row="3"/>
+        <TextBlock Name="Four_Give" Text="{Binding Path=GTens}" Grid.Column="4" Grid.Row="4"/>
+        <TextBlock Name="Five_Give" Text="{Binding Path=GFives}" Grid.Column="4" Grid.Row="5"/>
+        <TextBlock Name="Six_Give" Text="{Binding Path=GTwos}" Grid.Column="4" Grid.Row="6"/>
+        <TextBlock Name="Seven_Give" Text="{Binding Path=GOnes}" Grid.Column="4" Grid.Row="1"/>
+        
+        <TextBlock Name="Eight_Give" Text="{Binding Path=GDollars}" Grid.Column="9" Grid.Row="1"/>
+        <TextBlock Name="Nine_Give" Text="{Binding Path=GHalfDollars}" Grid.Column="9" Grid.Row="2"/>
+        <TextBlock Name="Ten_Give" Text="{Binding Path=GQuarters}" Grid.Column="9" Grid.Row="3"/>
+        <TextBlock Name="Eleven_Give" Text="{Binding Path=GDimes}" Grid.Column="9" Grid.Row="4"/>
+        <TextBlock Name="Twelve_Give" Text="{Binding Path=GNickels}" Grid.Column="9" Grid.Row="5"/>
+        <TextBlock Name="Thirteen_Give" Text="{Binding Path=GPennies}" Grid.Column="9" Grid.Row="6"/>
+
+        <TextBlock Grid.ColumnSpan="10" Grid.Row="8" Background="DarkCyan" />
+
+        <TextBlock Text="Total Sale" Grid.Row="9" TextWrapping="Wrap" FontSize="17" Padding="3"/>
+        <TextBlock Text="Amount Due" Grid.Column="3" Grid.Row="9" TextWrapping="Wrap" FontSize="17" Padding="3"/>
+        <TextBlock Text="Change Owed" Grid.Column="6" Grid.Row="9" TextWrapping="Wrap" FontSize="17" Padding="3"/>
+
+        <TextBlock x:Name="TotalSale" Text="{Binding Path=Total, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MenuScreen}}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9"/>
+        <TextBlock x:Name="AmountDue" Text="{Binding Path=Total, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MenuScreen}}" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="9"/>
+        <TextBlock x:Name="ChangeOwed" Text="0" Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="9"/>
+
+        <Button x:Name="FinalizeButton" Content="Finalize Sale" Grid.Column="9" Grid.Row="9" FontSize="12" HorizontalContentAlignment="Center" Padding="2" Click="FinalizeClick"/>
+    </Grid>
+</UserControl>
