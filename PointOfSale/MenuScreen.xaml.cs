@@ -588,9 +588,6 @@ namespace PointOfSale
             ToggleGrid.Children.Remove(ToggleGrid.Children[1]);
             Drawer drawer = new Drawer();
             ToggleGrid.Children.Add(drawer);
-
-            PrintReciept("Cash");
-            reset();
         }
 
         /// <summary>
@@ -605,7 +602,10 @@ namespace PointOfSale
                 PrintReciept("Card");
             }
         }
-        
+        /// <summary>
+        /// prints receipt for order
+        /// </summary>
+        /// <param name="paymenttype">card or cash</param>
         private void PrintReciept(string paymenttype)
         {
             RecieptPrinter.PrintLine("Order Number: " + orderNumber);
@@ -632,7 +632,9 @@ namespace PointOfSale
 
             RecieptPrinter.CutTape();
         }
-
+        /// <summary>
+        /// resets menuscreen for new order
+        /// </summary>
         private void reset()
         {
             ordered = new List<IOrderItem>();

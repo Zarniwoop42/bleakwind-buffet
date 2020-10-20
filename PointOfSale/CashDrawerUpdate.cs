@@ -32,7 +32,7 @@ namespace PointOfSale
         /// <summary>
         /// private backing customer given coins
         /// </summary>
-        private int cPennies;
+        private int cPennies = 0;
         private int cNickels = 0;
         private int cDimes = 0;
         private int cQuarters = 0;

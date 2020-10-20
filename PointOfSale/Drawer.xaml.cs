@@ -96,7 +96,7 @@ namespace PointOfSale
         /// </summary>
         private void update()
         {
-
+            /*
             for (int i = 44; i < 44 + 13; i++)
             {
                 int nameInd = 0;
@@ -120,7 +120,7 @@ namespace PointOfSale
                         case ("Thirteen"): nameInd = 13; break;
                     }
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void FinalizeClick(object sender, RoutedEventArgs e)
         {
-            
+           
         }
     }
 }
