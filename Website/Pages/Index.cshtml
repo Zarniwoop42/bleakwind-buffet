@@ -1,0 +1,136 @@
+﻿@page
+@using Menu = BleakwindBuffet.Data.Menu;
+@using IOrderItem = BleakwindBuffet.Data.IOrderItem;
+@using BleakwindBuffet.Data.Sides;
+@using BleakwindBuffet.Data.Drinks;
+@using BleakwindBuffet.Data.Enums;
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+    .menu-item-grid {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: auto auto auto;
+        padding: 3px;
+    }
+</style>
+
+<div>
+    <h1 class="display-4">Welcome to Bleakwind Buffet!</h1>
+    <p>
+        We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim.
+        Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas.
+        Hack into a Smokehouse Skeleton with your dagger. Or vanquish the the mighty Thalmor Triple Burger!
+        You’ve had a hard adventure and earned your loot, so spend it with us!
+    </p>
+
+    @{
+        IEnumerable<IOrderItem> entrees = Menu.Entrees();
+        IEnumerable<IOrderItem> sides = Menu.Sides();
+        IEnumerable<IOrderItem> drinks = Menu.Drinks();
+    }
+    <ul class="menu-item-grid">
+        <li>
+            <h2>Entrees</h2>
+            <ul>
+                @foreach (IOrderItem item in entrees)
+                {
+                    <li>
+                        <div class="menu-item">
+                            <h3>@item.ToString()</h3>
+                            <div>$@item.Price</div>
+                            <div>@item.Calories Calories</div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li>
+            <h2>Sides</h2>
+            <ul>
+                @foreach (IOrderItem item in sides)
+                {
+                    Side side = (Side)item;
+                    @if (side.Size == BleakwindBuffet.Data.Enums.Size.Small)
+                    {
+                        <li>
+                            <h3>@side.ToString().Replace("Small ", "")</h3>
+                            <div class="menu-item-grid">
+                                @foreach (Size s in Enum.GetValues(typeof(Size)))
+                                {
+                                    side.Size = s;
+                                    <div>@s:</div>
+                                    <div>$@side.Price</div>
+                                    <div>@side.Calories Calories</div>
+                                }
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </li>
+        <li>
+            <h2>Drinks</h2>
+            <ul>
+                @foreach (IOrderItem item in drinks)
+                {
+                    Drink drink = (Drink)item;
+                    if (drink.Size == BleakwindBuffet.Data.Enums.Size.Small)
+                    {
+                        if (drink.ToString().Contains("Sailor"))
+                        {
+                            SailorSoda soda = (SailorSoda)drink;
+                            if (soda.Flavor == BleakwindBuffet.Data.Enums.SodaFlavor.Blackberry)
+                            {
+                                <li>
+                                    <h3>@drink.ToString().Replace("Small Blackberry ", "")</h3>
+                                    <div>
+                                        <div>$@drink.Price</div>
+                                        <div>@drink.Calories Calories</div>
+                                        <div class="menu-item-grid">
+                                            @foreach (Size s in Enum.GetValues(typeof(Size)))
+                                            {
+                                                drink.Size = s;
+                                                <div>@s:</div>
+                                                <div>$@drink.Price</div>
+                                                <div>@drink.Calories Calories</div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div>Flavors:</div>
+                                    <ol class="menu-item-grid">
+                                        @foreach (SodaFlavor flav in Enum.GetValues(typeof(SodaFlavor)))
+                                        {
+                                            <li>@flav</li>
+                                        }
+                                    </ol>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li>
+                                <h3>@drink.ToString().Replace("Small ", "")</h3>
+                                <div class="menu-item-grid">
+                                    @foreach (Size s in Enum.GetValues(typeof(Size)))
+                                    {
+                                        drink.Size = s;
+                                        <div>@s:</div>
+                                        <div>$@drink.Price</div>
+                                        <div>@drink.Calories Calories</div>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </li>
+    </ul>
+    <p>
+       Any entree, side, and drink can be combined in a combo with a $1 discount!
+    </p>
+</div>
