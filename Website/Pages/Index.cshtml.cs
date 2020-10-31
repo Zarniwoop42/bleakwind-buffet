@@ -1,4 +1,8 @@
-﻿using System;
+﻿///Author: Graham Mathews
+///index.cshtml.cs
+///Defines index page
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
