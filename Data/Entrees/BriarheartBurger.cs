@@ -26,6 +26,8 @@ namespace BleakwindBuffet.Data.Entrees
         private bool pickle = true;
         private bool cheese = true;
 
+
+
         /// <summary>
         /// Gets price of menu item
         /// </summary>
@@ -138,6 +140,16 @@ namespace BleakwindBuffet.Data.Entrees
         
                 }
                 return instructions;
+            }
+        }
+        /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "Single patty burger on a brioche bun. Comes with ketchup, mustard, pickle, and cheese.";
             }
         }
 

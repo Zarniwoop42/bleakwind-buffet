@@ -115,6 +115,16 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "An old-fashioned jerked soda, carbonated water and flavored syrup poured over a bed of crushed ice.";
+            }
+        }
+        /// <summary>
         /// returns name of menu menu item.
         /// </summary>
         /// <returns>A string naming the menu item</returns>

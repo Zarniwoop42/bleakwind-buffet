@@ -103,6 +103,16 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "Hormone-free organic 2% milk.";
+            }
+        }
+        /// <summary>
         /// returns name of menu menu item.
         /// </summary>
         /// <returns>A string naming the menu item</returns>

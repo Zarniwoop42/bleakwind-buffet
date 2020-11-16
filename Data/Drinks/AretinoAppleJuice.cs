@@ -99,6 +99,17 @@ namespace BleakwindBuffet.Data.Drinks
                 return instructions;
             }
         }
+        /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "Fresh squeezed apple juice.";
+            }
+        }
+
 
         /// <summary>
         /// returns name of menu menu item.

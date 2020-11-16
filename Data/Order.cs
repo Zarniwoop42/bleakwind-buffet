@@ -247,5 +247,7 @@ namespace BleakwindBuffet.Data
         public int Count => ((ICollection<IOrderItem>)orderList).Count;
 
         public bool IsReadOnly => ((ICollection<IOrderItem>)orderList).IsReadOnly;
+
+        public string Description => throw new NotImplementedException();
     }
 }

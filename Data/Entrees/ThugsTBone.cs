@@ -37,6 +37,16 @@ namespace BleakwindBuffet.Data.Entrees
                 return instructions;
             }
         }
+        /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "Juicy T-Bone, not much else to say.";
+            }
+        }
 
         /// <summary>
         /// returns name of menu menu item.

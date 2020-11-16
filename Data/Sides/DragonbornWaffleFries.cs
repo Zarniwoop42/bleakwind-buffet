@@ -76,6 +76,16 @@ namespace BleakwindBuffet.Data.Sides
                 return instructions;
             }
         }
+        /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "Crispy fried potato waffle fries.";
+            }
+        }
 
         /// <summary>
         /// returns name of menu menu item.

@@ -111,5 +111,7 @@ namespace BleakwindBuffet.Data
             }
 
         }
+
+        public string Description => throw new NotImplementedException();
     }
 }

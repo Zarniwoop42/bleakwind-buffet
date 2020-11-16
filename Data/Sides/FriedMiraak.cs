@@ -76,6 +76,17 @@ namespace BleakwindBuffet.Data.Sides
                 return instructions;
             }
         }
+        /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "Perfectly prepared hash brown pancakes.";
+            }
+        }
+
 
         /// <summary>
         /// returns name of menu menu item.

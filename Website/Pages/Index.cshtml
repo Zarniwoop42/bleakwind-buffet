@@ -16,13 +16,41 @@
         grid-template-columns: auto auto auto;
         padding: 3px;
     }
+
+    .menu-item {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: auto auto;
+        padding: 3px;
+    }
+
     .filters {
         display: grid;
         grid-gap: 5px;
         grid-template-columns: auto auto auto auto;
         padding: 3px;
     }
+
+    .description {
+        padding: 4px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-style: italic;
+        font-size: 10px;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+
+    .menu-item-flex {
+        display: flex;
+        flex-direction: row;
+        grid-gap: 5px;
+        grid-template-columns: auto auto auto;
+        padding: 3px;
+    }
 </style>
+
 
 <form id="menu-database">
     <div id="results">
@@ -73,7 +101,8 @@
             IEnumerable<IOrderItem> sides = Menu.Sides();
             IEnumerable<IOrderItem> drinks = Menu.Drinks();
         }
-        <ul class="menu-item-grid">
+
+        <ul class="menu-item-flex">
             <li>
                 <h2>Entrees</h2>
                 <ul>
@@ -84,11 +113,12 @@
                             if (check.ToString() == item.ToString())
                             {
                                 <li>
+                                    <h3>@item.ToString()</h3>
                                     <div class="menu-item">
-                                        <h3>@item.ToString()</h3>
                                         <div>$@item.Price</div>
                                         <div>@item.Calories Calories</div>
                                     </div>
+                                    <div class="description">@item.Description</div>
                                 </li>
                             }
                         }
@@ -118,6 +148,7 @@
                                                 <div>@side.Calories Calories</div>
                                             }
                                         </div>
+                                        <div class="description">@item.Description</div>
                                     </li>
                                 }
                             }
@@ -164,6 +195,7 @@
                                                         <li>@flav</li>
                                                     }
                                                 </ol>
+                                                <div class="description">@item.Description</div>
                                             </li>
                                         }
                                     }
@@ -180,6 +212,7 @@
                                                     <div>@drink.Calories Calories</div>
                                                 }
                                             </div>
+                                            <div class="description">@item.Description</div>
                                         </li>
                                     }
                                 }
@@ -189,6 +222,7 @@
                 </ul>
             </li>
         </ul>
+        <div class="clearfix" />
         <p>
             Any entree, side, and drink can be combined in a combo with a $1 discount!
         </p>

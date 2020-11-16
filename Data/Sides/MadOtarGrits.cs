@@ -76,6 +76,16 @@ namespace BleakwindBuffet.Data.Sides
                 return instructions;
             }
         }
+        /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "Cheesey Grits.";
+            }
+        }
 
         /// <summary>
         /// returns name of menu menu item.

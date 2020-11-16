@@ -94,6 +94,16 @@ namespace BleakwindBuffet.Data.Drinks
                 return instructions;
             }
         }
+        /// <summary>
+        /// Gets description for the menu item.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return "It’s water. Just water.";
+            }
+        }
 
         /// <summary>
         /// returns name of menu menu item.

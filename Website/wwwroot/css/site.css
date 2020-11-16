@@ -71,3 +71,22 @@ body {
 }
 
 
+
+/* Does not work. Not the least idea of why */
+.clearfix {
+    clear: both;
+}
+
+.menu-item-flex {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 5px;
+    grid-template-columns: auto auto auto;
+    padding: 3px;
+}
+
+@media (max-width: 490px) {
+    .flex-columns {
+        flex-direction: column;
+    }
+}
